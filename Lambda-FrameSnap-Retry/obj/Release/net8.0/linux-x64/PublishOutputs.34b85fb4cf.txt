@@ -1,0 +1,10 @@
+C:\Users\Marcelo\OneDrive\Documentos\Pós Graduação FIAP\FIAP-SOAT\Hackaton\FrameSnap\Lambda-FrameSnap-Retry\Lambda-FrameSnap-Retry\bin\Release\net8.0\publish\Lambda-FrameSnap-Retry.deps.json
+C:\Users\Marcelo\OneDrive\Documentos\Pós Graduação FIAP\FIAP-SOAT\Hackaton\FrameSnap\Lambda-FrameSnap-Retry\Lambda-FrameSnap-Retry\bin\Release\net8.0\publish\Lambda-FrameSnap-Retry.runtimeconfig.json
+C:\Users\Marcelo\OneDrive\Documentos\Pós Graduação FIAP\FIAP-SOAT\Hackaton\FrameSnap\Lambda-FrameSnap-Retry\Lambda-FrameSnap-Retry\bin\Release\net8.0\publish\Lambda-FrameSnap-Retry.pdb
+C:\Users\Marcelo\OneDrive\Documentos\Pós Graduação FIAP\FIAP-SOAT\Hackaton\FrameSnap\Lambda-FrameSnap-Retry\Lambda-FrameSnap-Retry\bin\Release\net8.0\publish\Amazon.Lambda.Core.dll
+C:\Users\Marcelo\OneDrive\Documentos\Pós Graduação FIAP\FIAP-SOAT\Hackaton\FrameSnap\Lambda-FrameSnap-Retry\Lambda-FrameSnap-Retry\bin\Release\net8.0\publish\Amazon.Lambda.Serialization.SystemTextJson.dll
+C:\Users\Marcelo\OneDrive\Documentos\Pós Graduação FIAP\FIAP-SOAT\Hackaton\FrameSnap\Lambda-FrameSnap-Retry\Lambda-FrameSnap-Retry\bin\Release\net8.0\publish\Amazon.Lambda.SQSEvents.dll
+C:\Users\Marcelo\OneDrive\Documentos\Pós Graduação FIAP\FIAP-SOAT\Hackaton\FrameSnap\Lambda-FrameSnap-Retry\Lambda-FrameSnap-Retry\bin\Release\net8.0\publish\AWSSDK.Core.dll
+C:\Users\Marcelo\OneDrive\Documentos\Pós Graduação FIAP\FIAP-SOAT\Hackaton\FrameSnap\Lambda-FrameSnap-Retry\Lambda-FrameSnap-Retry\bin\Release\net8.0\publish\AWSSDK.SimpleNotificationService.dll
+C:\Users\Marcelo\OneDrive\Documentos\Pós Graduação FIAP\FIAP-SOAT\Hackaton\FrameSnap\Lambda-FrameSnap-Retry\Lambda-FrameSnap-Retry\bin\Release\net8.0\publish\AWSSDK.SQS.dll
+C:\Users\Marcelo\OneDrive\Documentos\Pós Graduação FIAP\FIAP-SOAT\Hackaton\FrameSnap\Lambda-FrameSnap-Retry\Lambda-FrameSnap-Retry\bin\Release\net8.0\publish\Lambda-FrameSnap-Retry.dll

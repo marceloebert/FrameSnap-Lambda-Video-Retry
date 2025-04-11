@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "dgSpecHash": "qCrdbcjhbyE=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Marcelo\\OneDrive\\Documentos\\Pós Graduação FIAP\\FIAP-SOAT\\Hackaton\\FrameSnap\\Lambda-FrameSnap-Retry\\Lambda-FrameSnap-Retry\\Lambda-FrameSnap-Retry.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Marcelo\\.nuget\\packages\\amazon.lambda.core\\2.2.0\\amazon.lambda.core.2.2.0.nupkg.sha512",
+    "C:\\Users\\Marcelo\\.nuget\\packages\\amazon.lambda.serialization.systemtextjson\\2.4.0\\amazon.lambda.serialization.systemtextjson.2.4.0.nupkg.sha512",
+    "C:\\Users\\Marcelo\\.nuget\\packages\\amazon.lambda.sqsevents\\2.2.0\\amazon.lambda.sqsevents.2.2.0.nupkg.sha512",
+    "C:\\Users\\Marcelo\\.nuget\\packages\\awssdk.core\\3.7.302.15\\awssdk.core.3.7.302.15.nupkg.sha512",
+    "C:\\Users\\Marcelo\\.nuget\\packages\\awssdk.simplenotificationservice\\3.7.301\\awssdk.simplenotificationservice.3.7.301.nupkg.sha512",
+    "C:\\Users\\Marcelo\\.nuget\\packages\\awssdk.sqs\\3.7.300.54\\awssdk.sqs.3.7.300.54.nupkg.sha512",
+    "C:\\Users\\Marcelo\\.nuget\\packages\\microsoft.netcore.app.runtime.linux-x64\\8.0.14\\microsoft.netcore.app.runtime.linux-x64.8.0.14.nupkg.sha512",
+    "C:\\Users\\Marcelo\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.linux-x64\\8.0.14\\microsoft.aspnetcore.app.runtime.linux-x64.8.0.14.nupkg.sha512",
+    "C:\\Users\\Marcelo\\.nuget\\packages\\microsoft.netcore.app.crossgen2.win-x64\\8.0.14\\microsoft.netcore.app.crossgen2.win-x64.8.0.14.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Lambda-FrameSnap-Retry depende de AWSSDK.SimpleNotificationService (>= 3.7.300.54) mas AWSSDK.SimpleNotificationService 3.7.300.54 não foi encontrado. AWSSDK.SimpleNotificationService 3.7.301 foi resolvido.",
+      "libraryId": "AWSSDK.SimpleNotificationService",
+      "targetGraphs": [
+        "net8.0",
+        "net8.0/linux-x64"
+      ]
+    }
+  ]
+}
