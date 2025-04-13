@@ -5,6 +5,7 @@ using Amazon.SimpleNotificationService.Model;
 using Amazon.SQS;
 using Amazon.SQS.Model;
 using System.Text.Json;
+using Amazon;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
@@ -17,6 +18,7 @@ public class Function
     private readonly IAmazonSimpleNotificationService _snsClient;
     private readonly string _dlqUrl;
     private const string SNS_TOPIC_ARN = "arn:aws:sns:us-east-1:339713138979:notificacoes-frameSnap";
+    private const string AWS_REGION = "us-east-1";
 
     /// <summary>
     /// Default constructor. This constructor is used by Lambda to construct the instance. When invoked in a Lambda environment
@@ -25,9 +27,10 @@ public class Function
     /// </summary>
     public Function()
     {
-        _sqsClient = new AmazonSQSClient();
-        _snsClient = new AmazonSimpleNotificationServiceClient();
-        _dlqUrl = Environment.GetEnvironmentVariable("DLQ_URL");
+        var region = RegionEndpoint.GetBySystemName(AWS_REGION);
+        _sqsClient = new AmazonSQSClient(region);
+        _snsClient = new AmazonSimpleNotificationServiceClient(region);
+        _dlqUrl = Environment.GetEnvironmentVariable("DLQ_URL") ?? throw new InvalidOperationException("DLQ_URL environment variable is not set");
     }
 
     /// <summary>

@@ -9,6 +9,7 @@ using Moq;
 using Xunit;
 using System.Text.Json;
 using System.Reflection;
+using Amazon;
 
 namespace Lambda_FrameSnap_Retry.Tests
 {
@@ -19,6 +20,7 @@ namespace Lambda_FrameSnap_Retry.Tests
         private readonly Function _function;
         private readonly TestLambdaContext _context;
         private const string SNS_TOPIC_ARN = "arn:aws:sns:us-east-1:339713138979:notificacoes-frameSnap";
+        private const string TEST_DLQ_URL = "https://sqs.us-east-1.amazonaws.com/123456789012/my-dlq";
 
         public FunctionTests()
         {
@@ -26,7 +28,7 @@ namespace Lambda_FrameSnap_Retry.Tests
             _mockSnsClient = new Mock<IAmazonSimpleNotificationService>();
             _context = new TestLambdaContext();
             
-            Environment.SetEnvironmentVariable("DLQ_URL", "https://sqs.us-east-1.amazonaws.com/123456789012/my-dlq");
+            Environment.SetEnvironmentVariable("DLQ_URL", TEST_DLQ_URL);
             
             // Criar a função usando reflection para injetar os mocks
             _function = new Function();
@@ -112,9 +114,6 @@ namespace Lambda_FrameSnap_Retry.Tests
         public async Task FunctionHandler_ShouldUseCorrectDLQUrl()
         {
             // Arrange
-            var expectedDlqUrl = "https://sqs.us-east-1.amazonaws.com/123456789012/my-dlq";
-            Environment.SetEnvironmentVariable("DLQ_URL", expectedDlqUrl);
-
             _mockSqsClient.Setup(x => x.ReceiveMessageAsync(It.IsAny<ReceiveMessageRequest>(), default))
                 .ReturnsAsync(new ReceiveMessageResponse { Messages = new List<Message>() });
 
@@ -125,7 +124,7 @@ namespace Lambda_FrameSnap_Retry.Tests
 
             // Assert
             _mockSqsClient.Verify(x => x.ReceiveMessageAsync(
-                It.Is<ReceiveMessageRequest>(r => r.QueueUrl == expectedDlqUrl),
+                It.Is<ReceiveMessageRequest>(r => r.QueueUrl == TEST_DLQ_URL),
                 default),
                 Times.Once);
         }
@@ -143,8 +142,6 @@ namespace Lambda_FrameSnap_Retry.Tests
             await _function.FunctionHandler(sqsEvent, _context);
 
             // Assert
-            // Verificar se o método LogInformation foi chamado com a mensagem correta
-            // Como não podemos acessar diretamente os logs, verificamos o comportamento indiretamente
             _mockSqsClient.Verify(x => x.ReceiveMessageAsync(It.IsAny<ReceiveMessageRequest>(), default), Times.Once);
         }
 
@@ -169,7 +166,6 @@ namespace Lambda_FrameSnap_Retry.Tests
             await _function.FunctionHandler(sqsEvent, _context);
 
             // Assert
-            // Verificar se o SNS foi chamado, o que indica que o log foi gerado
             _mockSnsClient.Verify(x => x.PublishAsync(It.IsAny<PublishRequest>(), default), Times.Once);
         }
 
@@ -185,7 +181,6 @@ namespace Lambda_FrameSnap_Retry.Tests
             // Act & Assert
             await Assert.ThrowsAsync<Exception>(() => _function.FunctionHandler(sqsEvent, _context));
             
-            // Verificar se o SNS foi chamado com a mensagem de erro
             _mockSnsClient.Verify(x => x.PublishAsync(
                 It.Is<PublishRequest>(r => r.Subject == "❌ Erro: Lambda DLQ Monitor - FrameSnap"),
                 default),
@@ -196,9 +191,6 @@ namespace Lambda_FrameSnap_Retry.Tests
         public async Task FunctionHandler_ShouldIncludeQueueUrlInNotification()
         {
             // Arrange
-            var expectedDlqUrl = "https://sqs.us-east-1.amazonaws.com/123456789012/my-dlq";
-            Environment.SetEnvironmentVariable("DLQ_URL", expectedDlqUrl);
-            
             var messages = new List<Message>
             {
                 new Message { MessageId = "msg1", Body = "test message 1" }
@@ -218,7 +210,7 @@ namespace Lambda_FrameSnap_Retry.Tests
             // Assert
             _mockSnsClient.Verify(x => x.PublishAsync(
                 It.Is<PublishRequest>(r => 
-                    r.Message.Contains(expectedDlqUrl)),
+                    r.Message.Contains(TEST_DLQ_URL)),
                 default),
                 Times.Once);
         }
