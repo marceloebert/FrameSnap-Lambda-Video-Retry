@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Lambda-FrameSnap-Retry")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+01f8a7d63cde8f3f81762d68d321826daa361ae7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+49fe9a82ac869a4c288b2c832043cdd9c0b94440")]
 [assembly: System.Reflection.AssemblyProductAttribute("Lambda-FrameSnap-Retry")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Lambda-FrameSnap-Retry")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
